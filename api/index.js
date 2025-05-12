@@ -6,11 +6,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Import routes
+const geminiRouter = require("./routes/gemini");
+const openaiRouter = require("./routes/openai");
 const usersRouter = require("./routes/users");
 const productsRouter = require("./routes/products");
 const ordersRouter = require("./routes/orders");
 
 // Use routes
+app.use("/api/gemini", geminiRouter);
+app.use("/api/openai", openaiRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/products", productsRouter);
 app.use("/api/orders", ordersRouter);
